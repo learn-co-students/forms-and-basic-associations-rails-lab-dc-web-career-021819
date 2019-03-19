@@ -8,9 +8,11 @@ class Song < ActiveRecord::Base
   end
 
   def genre_name=(genre_name_string)
-    genre = Genre.new
-    genre.name = genre_name_string
+    genre = Genre.find_or_create_by(name: genre_name_string)
+    # genre.name = genre_name_string
     genre.songs << self
+    genre.save
+    #binding.pry
     genre_name_string
   end
 
