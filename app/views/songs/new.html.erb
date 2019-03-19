@@ -4,8 +4,22 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br />
+  <%= f.label :artist %>
+  <%= f.text_field :artist, id: "song_artist_name" %>
+  <br>
+  <%= f.label :genre %>
+  <%= f.collection_select(:genre_id, Genre.all, :name, :name) %>
+  <br>
+  <h2>Notes</h2>
+  <% i = 1 %>
+  <% 2.times do %>
+    <%#= f.fields_for :notes do |note| %>
+      <%#= note.label :content %>
+      <%#= note.text_area :content, id: "song_notes_#{i}" %>
+    <%# end %>
+    <input type="text" name="song_notes_<%= i %>" id="song_notes_<%= i %>">
+    <% i += 1 %>
+  <% end %>
 
-  <%= f.submit %>
+  <%= f.submit "commit" %> 
 <% end %>
-
-
