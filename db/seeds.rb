@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # ID3 tag music genres are surprisingly specific.
+Genre.destroy_all
+Song.destroy_all
+Artist.destroy_all
 
 genres = Hash[[
   "Blues",
@@ -158,5 +161,3 @@ genres = Hash[[
   "JPop",
   "Synthpop"
 ].map { |genre| [genre, Genre.find_or_create_by(name: genre)] }]
-
-
